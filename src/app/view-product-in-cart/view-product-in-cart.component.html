@@ -1,0 +1,39 @@
+<div class="card">
+  <img class="card-img-top" src="{{ product.url }}" alt="Card image cap" />
+
+  <div class="card-body">
+    <span class="card-title">
+      <a
+        routerLink="/Product-Details/{{ product.id }}"
+        class="link-secondary"
+        >{{ product.name }}</a
+      >
+    </span>
+    &nbsp;
+    <span class="card-text">{{ product.price }} $</span>
+    <p class="card-text" style="text-align: justify">
+      {{ product.description }}
+    </p>
+    <form>
+      <div class="row">
+        <div class="col-8">
+          <label class="col-6">Quentity :</label
+          ><input
+            class="col-6 border border-light rounded"
+            type="text"
+            name="quentity"
+            min="1"
+            disabled
+            [(ngModel)]="product.quentity"
+          />
+        </div>
+
+        <!-- <div class="col-4">
+          <label>Stock : </label><span>{{ product.stock }}</span>
+        </div> -->
+      </div>
+    </form>
+
+
+  </div>
+</div>

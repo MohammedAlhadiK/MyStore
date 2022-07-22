@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Book",
+    "price": 9.99,
+    "url": "/assets/images/products/1.jpg",
+    "description": "You can read it!",
+    "stock": 3,
+    "quentity": 0
+  },
+  {
+    "id": 2,
+    "name": "Headphones",
+    "price": 249.99,
+    "url": "/assets/images/products/2.jpg",
+    "description": "Listen to stuff!",
+    "stock": 7,
+    "quentity": 0
+  },
+  {
+    "id": 3,
+    "name": "Backpack",
+    "price": 79.99,
+    "url": "/assets/images/products/4.jpg",
+    "description": "Carry things around town!",
+    "stock": 8,
+    "quentity": 0
+  },
+  {
+    "id": 4,
+    "name": "Glasses",
+    "price": 129.99,
+    "url": "/assets/images/products/4.jpg",
+    "description": "Now you can see!",
+    "stock": 5,
+    "quentity": 0
+  },
+  {
+    "id": 5,
+    "name": "Cup",
+    "price": 4.99,
+    "url": "/assets/images/products/4.jpg",
+    "description": "Drink anything with it!",
+    "stock": 5,
+    "quentity": 0
+  },
+  {
+    "id": 6,
+    "name": "Shirt",
+    "price": 29.99,
+    "url": "/assets/images/products/2.jpg",
+    "description": "Wear it with style!",
+    "stock": 12,
+    "quentity": 0
+  }
+]

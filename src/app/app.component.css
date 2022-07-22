@@ -1,0 +1,11 @@
+._container{
+  min-height: 80vh;
+}
+.general-container{
+  min-height: 100vh;
+}
+.footer-container{
+  min-height: 200px;
+  margin-top: auto;
+
+}

@@ -1,0 +1,16 @@
+.notification {
+  position: relative;
+}
+
+.notification .badge {
+  position: absolute;
+  top: 25px;
+  right: -3px;
+  border-radius: 50%;
+  background: #dc3545;
+  color: white;
+}
+
+.navbar{
+  width: 100%;
+}
