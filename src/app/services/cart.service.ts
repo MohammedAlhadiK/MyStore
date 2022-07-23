@@ -19,22 +19,19 @@ export class CartService {
     return CurrentProduct;
   }
   addProductToCart(targetedProduct: Product) {
-    if (this.existElement(targetedProduct, this.productCartList)) {
+    const prodID = targetedProduct.id;
+    const prodQu = targetedProduct.quentity;
+    if (this.existElement2(prodID, this.productCartList)) {
       // this.editProductQuentity(targetedProduct, this.productCartList);
-      this.productCartList.filter(
-        (p) => p.id == targetedProduct.id
-      )[0].quentity = targetedProduct.quentity;
-
+      this.productCartList
+        .filter((p) => p.id == prodID)
+        .map((p) => (p.quentity += prodQu));
       console.log(targetedProduct);
     } else this.productCartList.push(targetedProduct);
 
     this.snackbarService.open(
-      targetedProduct.quentity +
-        ' of ' +
-        targetedProduct.name +
-        ' successfully added to cart',
-      'X',
-      { duration: 2000 }
+      prodQu + ' of ' + targetedProduct.name + ' successfully added to cart',
+      'X'
     );
   }
   removeProduct(Productid: number): void {
@@ -48,16 +45,21 @@ export class CartService {
     this.productCartList = [];
   }
 
+  existElement2(elementid: number, array: Product[]): boolean {
+    let filteredArray = array.filter((p) => p.id === elementid);
+    if (filteredArray.length > 0) return true;
+    else return false;
+  }
   existElement(element: Product, array: Product[]): boolean {
     let filteredArray = array.filter((p) => p.id === element.id);
     if (filteredArray.length > 0) return true;
     else return false;
   }
   editProductQuentity(element: Product, array: Product[]) {
-    // array
-    //   .filter((p) => p.id == element.id)
-    //   .map((p) => (p.quentity += element.quentity));
-    array.filter((p) => p.id == element.id)[0].quentity += 1;
+    array
+      .filter((p) => p.id == element.id)
+      .map((p) => (p.quentity += element.quentity));
+    // array.filter((p) => p.id == element.id)[0].quentity += 1;
   }
 
   fetchProducts(): Observable<Product[]> {

@@ -6,7 +6,7 @@
   <div class="details-section col-lg-5 p-5">
     <h1>{{ product.name }}</h1>
     <h3>{{ product.price }} $</h3>
-    <h4>Stock : {{ product.stock }}</h4>
+    <!-- <h4>Stock : {{ product.stock }}</h4> -->
     <div>
       <p>
         {{ product.description }}
@@ -23,6 +23,7 @@
           [(ngModel)]="productQentity"
         />
       </div>
+      <div class="col-2"><p>{{product.quentity}}</p></div>
 
       <!-- <div class="col-4">
         <label>Stock : </label><span>{{ product.stock }}</span>

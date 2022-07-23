@@ -13,7 +13,7 @@ import { WishListService } from '../services/wish-list.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product: any = new Product();
-  @Output() updatedproduct: any = new EventEmitter();
+  // @Output() updatedproduct: any = new EventEmitter();
   productQuentity: number = 1;
   constructor(
     private cartService: HandlecartService,
@@ -21,14 +21,33 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  addToCart(targetedProduct: Product) {
-    this.product.quentity = this.productQuentity;
-    this.updatedproduct.emit(this.product);
+  addToCart() {
+    // this.product.quentity = this.productQuentity;
+    // this.updatedproduct.emit(this.product);
+    let ProductBR = new Product();
+    ProductBR.id = this.product.id;
+    ProductBR.name = this.product.name;
+    ProductBR.quentity = this.productQuentity;
+    ProductBR.description = this.product.description;
+    ProductBR.price = this.product.price;
+    ProductBR.stock = this.product.stock;
+    ProductBR.url = this.product.url;
 
+    this.cartService.addProductToCart(ProductBR);
     // targetedProduct.quentity = this.productQuentity;
     // this.cartService.addProductToCart(targetedProduct);
   }
-  addToWishList(targetedProduct: Product) {
-    this.wishListservice.addProductToWishList(targetedProduct);
+  addToWishList() {
+    let ProductBR = new Product();
+    ProductBR.id = this.product.id;
+    ProductBR.name = this.product.name;
+    ProductBR.quentity = this.productQuentity;
+    ProductBR.description = this.product.description;
+    ProductBR.price = this.product.price;
+    ProductBR.stock = this.product.stock;
+    ProductBR.url = this.product.url;
+
+    this.wishListservice.addProductToWishList(ProductBR);
+    // this.wishListservice.addProductToWishList(targetedProduct);
   }
 }

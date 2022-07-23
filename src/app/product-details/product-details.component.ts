@@ -41,22 +41,16 @@ export class ProductDetailsComponent implements OnInit {
     )[0];
   }
   addToCart() {
-    // console.log(this.product.quentity);
-    // this.product.quentity = this.productQentity;
-    // this.cartService.addProductToCart(this.product);
-    // this.updatedproduct.emit(this.product);
-    if (
-      this.cartService.existElement(
-        this.product,
-        this.cartService.getAllProduct()
-      )
-    ) {
-      this.product.quentity += this.productQentity;
-    } else {
-      this.product.quentity = this.productQentity;
-    }
+    let ProductBR = new Product();
+    ProductBR.id = this.product.id;
+    ProductBR.name = this.product.name;
+    ProductBR.quentity = this.productQentity;
+    ProductBR.description = this.product.description;
+    ProductBR.price = this.product.price;
+    ProductBR.stock = this.product.stock;
+    ProductBR.url = this.product.url;
 
-    this.cartService.addProductToCart(this.product);
+    this.cartService.addProductToCart(ProductBR);
   }
   addToWishList() {
     this.wishListservice.addProductToWishList(this.product);

@@ -20,7 +20,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {}
   addtocart(eventll: any) {
     console.log(eventll, 'from parent');
-    this.cartService.addProductToCart(eventll);
+
+    // this.cartService.addProductToCart(eventll);
     this.getProductsFromAPI()
   }
 
