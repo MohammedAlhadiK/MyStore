@@ -1,6 +1,5 @@
 <div class="card">
   <img class="card-img-top" src="{{ product.url }}" alt="Card image cap" />
-
   <div class="card-body">
     <span class="card-title">
       <a
@@ -11,28 +10,26 @@
     </span>
     &nbsp;
     <span class="card-text">{{ product.price }} $</span>
-    <p class="card-text" style="text-align: justify">
-      {{ product.description }}
-    </p>
-    <form (submit)="addToCart(product)">
+
+    <form>
       <div class="row">
-        <div class="col-8">
-          <label class="col-6">Quentity :</label
+        <div class="col-12">
+          <label class="col-7 " style="justify-content: left;">Quentity :</label
           ><input
-            class="col-6 border border-dark rounded"
+            class="col-5 border border-dark rounded"
             type="number"
             name="productQuentity"
             min="1"
             [(ngModel)]="productQuentity"
           />
         </div>
-
-        <!-- <div class="col-4">
-          <label>Stock : </label><span>{{ product.stock }}</span>
-        </div> -->
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-dark m-2 col-md-4 text-center">
+        <button
+          type="submit"
+          (click)="addToCart()"
+          class="btn btn-dark m-2 col-md-4 text-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -47,7 +44,7 @@
           </svg>
         </button>
         <button
-          (click)="addToWishList(product)"
+          (click)="addToWishList()"
           class="btn btn-dark m-2 col-md-4 text-center"
         >
           <svg

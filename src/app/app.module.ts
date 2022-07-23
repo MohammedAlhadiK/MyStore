@@ -16,9 +16,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ViewProductInCartComponent } from './view-product-in-cart/view-product-in-cart.component';
-import { ToastComponent } from './toast/toast.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WishlistComponent } from './wishlist/wishlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NavbarComponent,
     FooterComponent,
     ViewProductInCartComponent,
-    ToastComponent,
+    WishlistComponent,
+
+
   ],
   imports: [
     BrowserModule,

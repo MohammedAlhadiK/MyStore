@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
-
-import { HandlecartService } from '../services/handlecart.service';
+import { CartService } from '../services/cart.service';
 
 import { WishListService } from '../services/wish-list.service';
 
@@ -13,22 +11,36 @@ import { WishListService } from '../services/wish-list.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product: any = new Product();
-  @Output() updatedproduct: any = new EventEmitter();
   productQuentity: number = 1;
+  wishList = true;
   constructor(
-    private cartService: HandlecartService,
+    private cartService: CartService,
     private wishListservice: WishListService
   ) {}
 
   ngOnInit(): void {}
-  addToCart(targetedProduct: Product) {
-    this.product.quentity = this.productQuentity;
-    this.updatedproduct.emit(this.product);
+  addToCart() {
+    let ProductBR = new Product();
+    ProductBR.id = this.product.id;
+    ProductBR.name = this.product.name;
+    ProductBR.quentity = this.productQuentity;
+    ProductBR.description = this.product.description;
+    ProductBR.price = this.product.price;
+    ProductBR.stock = this.product.stock;
+    ProductBR.url = this.product.url;
 
-    // targetedProduct.quentity = this.productQuentity;
-    // this.cartService.addProductToCart(targetedProduct);
+    this.cartService.addProductToCart(ProductBR);
   }
-  addToWishList(targetedProduct: Product) {
-    this.wishListservice.addProductToWishList(targetedProduct);
+  addToWishList() {
+    let ProductBR = new Product();
+    ProductBR.id = this.product.id;
+    ProductBR.name = this.product.name;
+    ProductBR.quentity = this.product.quentity;
+    ProductBR.description = this.product.description;
+    ProductBR.price = this.product.price;
+    ProductBR.stock = this.product.stock;
+    ProductBR.url = this.product.url;
+
+    this.wishListservice.addProductToWishList(ProductBR);
   }
 }

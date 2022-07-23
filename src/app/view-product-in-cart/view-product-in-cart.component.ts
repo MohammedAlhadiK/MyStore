@@ -4,14 +4,12 @@ import { Product } from '../models/product.model';
 @Component({
   selector: 'app-view-product-in-cart',
   templateUrl: './view-product-in-cart.component.html',
-  styleUrls: ['./view-product-in-cart.component.css']
+  styleUrls: ['./view-product-in-cart.component.css'],
 })
 export class ViewProductInCartComponent implements OnInit {
   @Input() product: Product = new Product();
+  @Input() wishList: boolean = true;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

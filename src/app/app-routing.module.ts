@@ -7,15 +7,17 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SuccessfulOperationComponent } from './successful-operation/successful-operation.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: 'Home', component: ProductListComponent },
-  { path: '', component: ProductListComponent },
+  { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Check-out', component: CheckoutFormComponent },
   { path: 'Orders', component: OrdersComponent },
   { path: 'Product-Details/:id', component: ProductDetailsComponent },
   { path: 'My-Cart', component: ShoppingCartComponent },
   { path: 'Success', component: SuccessfulOperationComponent },
+  { path: 'Wish-List', component: WishlistComponent },
   { path: '**', component: NotFoundPageComponent },
 ];
 

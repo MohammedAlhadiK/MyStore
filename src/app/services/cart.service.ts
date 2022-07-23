@@ -8,6 +8,7 @@ import { Product } from '../models/product.model';
 })
 export class CartService {
   private productCartList: Product[] = [];
+  cartCounter = this.productCartList.length;
   constructor(private snackbarService: MatSnackBar) {}
   getAllProduct(): Product[] {
     return this.productCartList;
@@ -19,22 +20,19 @@ export class CartService {
     return CurrentProduct;
   }
   addProductToCart(targetedProduct: Product) {
-    if (this.existElement(targetedProduct, this.productCartList)) {
-      // this.editProductQuentity(targetedProduct, this.productCartList);
-      this.productCartList.filter(
-        (p) => p.id == targetedProduct.id
-      )[0].quentity = targetedProduct.quentity;
-
-      console.log(targetedProduct);
+    if (this.existElement(targetedProduct.id, this.productCartList)) {
+      this.productCartList
+        .filter((p) => p.id == targetedProduct.id)
+        .map((p) => (p.quentity += targetedProduct.quentity));
     } else this.productCartList.push(targetedProduct);
 
     this.snackbarService.open(
       targetedProduct.quentity +
         ' of ' +
         targetedProduct.name +
-        ' successfully added to cart',
-      'X',
-      { duration: 2000 }
+        ' successfully added to your cart',
+      'Dismiss',
+      { duration: 1600 }
     );
   }
   removeProduct(Productid: number): void {
@@ -45,29 +43,19 @@ export class CartService {
   }
 
   clearCart() {
-    this.productCartList = [];
+    for (let index = 0; index <= this.productCartList.length; index++) {
+     this.productCartList.pop();
+    }
+
   }
 
-  existElement(element: Product, array: Product[]): boolean {
-    let filteredArray = array.filter((p) => p.id === element.id);
-    if (filteredArray.length > 0) return true;
-    else return false;
+  existElement(elementid: number, array: Product[]): boolean {
+    return array.filter((p) => p.id === elementid).length > 0;
   }
+
   editProductQuentity(element: Product, array: Product[]) {
-    // array
-    //   .filter((p) => p.id == element.id)
-    //   .map((p) => (p.quentity += element.quentity));
-    array.filter((p) => p.id == element.id)[0].quentity += 1;
-  }
-
-  fetchProducts(): Observable<Product[]> {
-    let time = new Observable<Product[]>((observer) => {
-      setInterval(() => {
-        observer.next(this.productCartList);
-        console.log('don0e');
-      }, 10);
-    });
-
-    return time;
+    array
+      .filter((p) => p.id == element.id)
+      .map((p) => (p.quentity += element.quentity));
   }
 }

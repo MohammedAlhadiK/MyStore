@@ -43,3 +43,8 @@ img {
   justify-content: center;
   margin-top: 64px;
 }
+
+.check-out {
+  max-height: 300px;
+  padding: 10px;
+}

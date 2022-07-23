@@ -1,7 +1,48 @@
-<div class="card-group">
-  <div class="col-3 p-1 mb-3" *ngFor="let product of Products">
-    <app-view-product-in-cart [product]="product"></app-view-product-in-cart>
+<div class="row">
+  <div class="card-group col-lg-8">
+    <div class="col-4 p-1 mb-3" *ngFor="let product of Products">
+      <app-view-product-in-cart [product]="product"></app-view-product-in-cart>
+    </div>
+  </div>
+
+  <div class="row col-lg-4 check-out">
+    <form (submit)="checkOut()">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your Full Name"
+          name="fullname"
+          [(ngModel)]="order.fullname"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your Address"
+          name="fullname"
+          [(ngModel)]="order.address"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your Credit card Number"
+          name="fullname"
+          [(ngModel)]="order.creditcard"
+        />
+      </div>
+
+      <h1 class="d-flex justify-content-center">
+        Total : ${{ total.toFixed(2) }}
+      </h1>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success col-lg-12 m-3 p-2">
+          Check Out
+        </button>
+      </div>
+    </form>
   </div>
 </div>
-
-

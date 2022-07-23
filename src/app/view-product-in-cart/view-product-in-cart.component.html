@@ -14,7 +14,7 @@
     <p class="card-text" style="text-align: justify">
       {{ product.description }}
     </p>
-    <form>
+    <form *ngIf="wishList">
       <div class="row">
         <div class="col-8">
           <label class="col-6">Quentity :</label
@@ -33,7 +33,5 @@
         </div> -->
       </div>
     </form>
-
-
   </div>
 </div>

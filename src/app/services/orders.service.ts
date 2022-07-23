@@ -15,7 +15,7 @@ export class OrdersService {
     let Currentorder = this.Orders.filter((x) => x.id === orderid)[0];
     return Currentorder;
   }
-  addorderToCart(targetedorder: Order) {
+  addorder(targetedorder: Order) {
     this.Orders.push(targetedorder);
   }
   removeorder(orderid: number): void {

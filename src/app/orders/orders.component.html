@@ -1,1 +1,16 @@
-<p>orders works!</p>
+<div class="row col-lg-12">
+  <div class="card col-lg-3" *ngFor="let order of Orders">
+    <img
+      class="card-img-top"
+      src="../../assets/images/products/Customers-Place-Orders-icon.png"
+      alt="Card image cap"
+    />
+    <div class="card-body d-flex justify-content-center">
+      <span class="card-title">
+        <a class="link-secondary">{{ order.datetimeCreated|date }}</a>
+      </span>
+      &nbsp;
+      <span class="card-text">{{ order.totalpayed }} $</span>
+    </div>
+  </div>
+</div>
