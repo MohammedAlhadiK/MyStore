@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
 import { WishListService } from '../services/wish-list.service';
@@ -11,6 +12,7 @@ import { WishListService } from '../services/wish-list.service';
 export class ViewProductInCartComponent implements OnInit {
   @Input() product: Product = new Product();
   @Input() wishList: boolean = true;
+  @Output() totalPayed: EventEmitter<number> = new EventEmitter();
   constructor(
     private cartService: CartService,
     private wishListservice: WishListService
@@ -19,6 +21,9 @@ export class ViewProductInCartComponent implements OnInit {
   ngOnInit(): void {}
   removeProductFromCart() {
     this.cartService.removeProduct(this.product.id);
+
+    let sum = this.cartService.getTotal();
+    this.totalPayed.emit(sum);
   }
   addToCart() {
     let ProductBR = new Product();
@@ -31,6 +36,8 @@ export class ViewProductInCartComponent implements OnInit {
     ProductBR.url = this.product.url;
 
     this.cartService.addProductToCart(ProductBR);
+    let sum = this.cartService.getTotal();
+    this.totalPayed.emit(sum);
   }
   addToWishList() {
     let ProductBR = new Product();

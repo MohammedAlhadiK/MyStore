@@ -1,7 +1,7 @@
 <div class="row">
   <div class="card-group col-lg-8">
     <div class="col-4 p-1 mb-3" *ngFor="let product of Products">
-      <app-view-product-in-cart [product]="product"></app-view-product-in-cart>
+      <app-view-product-in-cart [product]="product" (totalPayed)="total=$event"></app-view-product-in-cart>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { observable, Observable } from 'rxjs';
+import { observable, Observable, Observer } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -8,8 +8,13 @@ import { Product } from '../models/product.model';
 })
 export class CartService {
   private productCartList: Product[] = [];
+  totalpayed: number = 120;
   cartCounter = this.productCartList.length;
-  constructor(private snackbarService: MatSnackBar) {}
+  constructor(private snackbarService: MatSnackBar) {
+    this.productCartList.forEach((x) => {
+      this.totalpayed += x.price * x.quentity;
+    });
+  }
   getAllProduct(): Product[] {
     return this.productCartList;
   }
@@ -21,10 +26,12 @@ export class CartService {
   }
   addProductToCart(targetedProduct: Product) {
     if (this.existElement(targetedProduct.id, this.productCartList)) {
+
       this.productCartList
         .filter((p) => p.id == targetedProduct.id)
         .map((p) => (p.quentity += targetedProduct.quentity));
     } else this.productCartList.push(targetedProduct);
+
 
     this.snackbarService.open(
       targetedProduct.quentity +
@@ -63,5 +70,14 @@ export class CartService {
     array
       .filter((p) => p.id == element.id)
       .map((p) => (p.quentity += element.quentity));
+  }
+
+  getTotal():number{
+   let Sum:number=0;
+    this.productCartList.forEach((x) => {
+      Sum += x.price * x.quentity;
+    });
+
+    return Sum;
   }
 }

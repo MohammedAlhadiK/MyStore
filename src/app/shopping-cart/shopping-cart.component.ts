@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Order } from '../models/order.model';
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
@@ -15,7 +15,7 @@ import { OrdersService } from '../services/orders.service';
 export class ShoppingCartComponent implements OnInit {
   // Products: Product[] = [...new Set(this.cartService.getAllProduct())];
   Products: Product[] = this.cartService.getAllProduct();
-  total: number = this.calculateTotal();
+  total: number = this.cartService.getTotal();
   order: Order = new Order();
 
   constructor(
@@ -23,15 +23,16 @@ export class ShoppingCartComponent implements OnInit {
     private ordersService: OrdersService,
     private router: Router,
     private snackbarService: MatSnackBar
-  ) {
-    this.total = this.calculateTotal();
-  }
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+
+  }
 
   checkOut(userForm: NgForm) {
     if (userForm.valid) {
-      if (this.total== 0) {
+      if (this.total == 0) {
         this.snackbarService.open(
           'You did not buy any product 🤨 Check it again 🤔 ',
           'Dismiss',
@@ -40,11 +41,7 @@ export class ShoppingCartComponent implements OnInit {
       } else {
         this.order.products = this.Products;
         this.order.totalpayed = this.total;
-
         this.ordersService.addorder(this.order);
-
-        // this.router.navigateByUrl('Success');
-        // this.cartService.clearCart();
         this.router.navigateByUrl('/Order-Confirmation');
       }
     } else {
@@ -55,6 +52,7 @@ export class ShoppingCartComponent implements OnInit {
       );
     }
   }
+
   calculateTotal(): number {
     let sum = 0;
 

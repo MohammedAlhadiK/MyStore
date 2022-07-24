@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
 
@@ -12,6 +12,8 @@ import { WishListService } from '../services/wish-list.service';
 export class ProductComponent implements OnInit {
   @Input() product: any = new Product();
   productQuentity: number = 1;
+  @Output() totalPayed: EventEmitter<number> = new EventEmitter();
+
   wishList = true;
   constructor(
     private cartService: CartService,
@@ -30,9 +32,13 @@ export class ProductComponent implements OnInit {
     ProductBR.url = this.product.url;
 
     this.cartService.addProductToCart(ProductBR);
+    let sum = this.cartService.getTotal();
+    this.totalPayed.emit(sum);
   }
-  removeProductFromCart(){
+  removeProductFromCart() {
     this.cartService.removeProduct(this.product.id);
+    let sum = this.cartService.getTotal();
+    this.totalPayed.emit(sum);
   }
   addToWishList() {
     let ProductBR = new Product();
