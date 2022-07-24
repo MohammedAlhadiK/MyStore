@@ -6,7 +6,7 @@
   </div>
 
   <div class="row col-lg-4 check-out">
-    <form (submit)="checkOut()">
+    <form (submit)="checkOut(userForm)" #userForm="ngForm">
       <div class="input-group mb-3">
         <input
           type="text"
@@ -14,33 +14,66 @@
           placeholder="Enter your Full Name"
           name="fullname"
           [(ngModel)]="order.fullname"
+          required
+          #fullname="ngModel"
+          id="fullname"
+          [class.is-invalid]="((fullname.touched|| userForm.submitted) || fullname.dirty ) && (fullname.errors?.['required']|| fullname.errors?.['minlength'])"
+          [class.is-valid]="fullname.valid"
         />
       </div>
+      <div
+      class="text-danger"
+      *ngIf="((fullname.touched|| userForm.submitted) || fullname.dirty ) && fullname.errors?.['required']"
+    >
+    full Name is required
+    </div>
       <div class="input-group mb-3">
         <input
           type="text"
           class="form-control"
           placeholder="Enter your Address"
-          name="fullname"
+          name="address"
           [(ngModel)]="order.address"
+          required
+          #address="ngModel"
+          id="creditcard"
+          [class.is-invalid]="((address.touched|| userForm.submitted) || address.dirty ) && (address.errors?.['required']|| address.errors?.['minlength'])"
+          [class.is-valid]="address.valid"
         />
       </div>
+      <div
+      class="text-danger"
+      *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['required']"
+    >
+    Address is required
+    </div>
       <div class="input-group mb-3">
         <input
           type="text"
           class="form-control"
           placeholder="Enter your Credit card Number"
-          name="fullname"
+          name="creditcard"
           [(ngModel)]="order.creditcard"
+          required
+          #creditcard="ngModel"
+          id="creditcard"
+          [class.is-invalid]="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && (creditcard.errors?.['required']|| creditcard.errors?.['minlength'])"
+          [class.is-valid]="creditcard.valid"
         />
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['required']"
+      >
+        Credit card is required
       </div>
 
       <h1 class="d-flex justify-content-center">
-        Total : ${{ total.toFixed(2) }}
+        Total : ${{ total}}
       </h1>
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success col-lg-12 m-3 p-2">
-          Check Out
+        Confirm Your Order
         </button>
       </div>
     </form>

@@ -36,17 +36,23 @@ export class CartService {
     );
   }
   removeProduct(Productid: number): void {
-    let CurrentProduct = this.productCartList.filter(
-      (x) => x.id === Productid
-    )[0];
-    this.productCartList.splice(CurrentProduct.id, 1);
+    for (let index = 0; index <= this.productCartList.length; index++) {
+      if (this.productCartList[index].id == Productid) {
+        this.productCartList.splice(index, 1);
+      }
+    }
+    this.snackbarService.open(
+      'item deleted successfully from your cart',
+      'Dismiss',
+      { duration: 1600 }
+    );
+    // this.productCartList.splice(CurrentProduct, 1);
   }
 
   clearCart() {
     for (let index = 0; index <= this.productCartList.length; index++) {
-     this.productCartList.pop();
+      this.productCartList.pop();
     }
-
   }
 
   existElement(elementid: number, array: Product[]): boolean {

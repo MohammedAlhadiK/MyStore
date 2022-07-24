@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
@@ -21,7 +22,8 @@ export class ProductDetailsComponent implements OnInit {
     private serverMediator: ServerMediatorService,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
-    private wishListservice: WishListService
+    private wishListservice: WishListService,
+    private snackbarService:MatSnackBar
   ) {
     console.log(this.product);
     this.serverMediator.getProducts().subscribe((result) => {
@@ -54,5 +56,14 @@ export class ProductDetailsComponent implements OnInit {
   }
   addToWishList() {
     this.wishListservice.addProductToWishList(this.product);
+  }
+  validateQuentity(){
+    if(this.productQentity == 5){
+      this.snackbarService.open(
+        'product Qentity = 5 😁 ',
+        'Dismiss',
+        { duration: 2000 }
+      );
+    }
   }
 }

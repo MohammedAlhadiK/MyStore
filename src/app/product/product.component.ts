@@ -31,6 +31,9 @@ export class ProductComponent implements OnInit {
 
     this.cartService.addProductToCart(ProductBR);
   }
+  removeProductFromCart(){
+    this.cartService.removeProduct(this.product.id);
+  }
   addToWishList() {
     let ProductBR = new Product();
     ProductBR.id = this.product.id;

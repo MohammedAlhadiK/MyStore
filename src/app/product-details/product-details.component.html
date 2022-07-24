@@ -20,9 +20,11 @@
           name="productQentity"
           min="1"
           [(ngModel)]="productQentity"
+          (ngModelChange)="validateQuentity()"
         />
       </div>
     </div>
+
 
     <button class="btn btn-dark m-2 p-2" (click)="addToCart()">
       Add to Cart

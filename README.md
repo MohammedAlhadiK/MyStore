@@ -1,4 +1,26 @@
-# MyStore
+# My Store
+
+e-Commerce Application
+
+## Installation
+use npm install to install the required package
+use ng serve -o to open the application on default port 4200
+
+## pages
+Home: view all the products in the store
+cart: view all the products in your cart
+product details: you can reach this page by clicking the product name you can see the description and you also can add it to your cart with any amount you want.
+orders: you can see the late orders have been made on the cart.
+
+## Contributing
+Pull requests are welcome. For significant changes, please open an issue to discuss what you want to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+# Generated
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 

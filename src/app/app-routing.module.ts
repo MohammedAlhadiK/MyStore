@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { OrderConfirmationPageComponent } from './order-confirmation-page/order-confirmation-page.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'Product-Details/:id', component: ProductDetailsComponent },
   { path: 'My-Cart', component: ShoppingCartComponent },
   { path: 'Success', component: SuccessfulOperationComponent },
+  { path: 'Order-Confirmation', component: OrderConfirmationPageComponent },
   { path: 'Wish-List', component: WishlistComponent },
   { path: '**', component: NotFoundPageComponent },
 ];
