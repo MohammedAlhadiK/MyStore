@@ -7,73 +7,114 @@
 
   <div class="row col-lg-4 check-out">
     <form (submit)="checkOut(userForm)" #userForm="ngForm">
+
+
+
+
+
+
       <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter your Full Name"
-          name="fullname"
-          [(ngModel)]="order.fullname"
-          required
-          #fullname="ngModel"
-          id="fullname"
-          [class.is-invalid]="((fullname.touched|| userForm.submitted) || fullname.dirty ) && (fullname.errors?.['required']|| fullname.errors?.['minlength'])"
-          [class.is-valid]="fullname.valid"
-        />
-      </div>
-      <div
-      class="text-danger"
-      *ngIf="((fullname.touched|| userForm.submitted) || fullname.dirty ) && fullname.errors?.['required']"
-    >
-    full Name is required
-    </div>
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter your Address"
-          name="address"
-          [(ngModel)]="order.address"
-          required
-          #address="ngModel"
-          id="creditcard"
-          [class.is-invalid]="((address.touched|| userForm.submitted) || address.dirty ) && (address.errors?.['required']|| address.errors?.['minlength'])"
-          [class.is-valid]="address.valid"
-        />
-      </div>
-      <div
-      class="text-danger"
-      *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['required']"
-    >
-    Address is required
-    </div>
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter your Credit card Number"
-          name="creditcard"
-          [(ngModel)]="order.creditcard"
-          required
-          #creditcard="ngModel"
-          id="creditcard"
-          [class.is-invalid]="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && (creditcard.errors?.['required']|| creditcard.errors?.['minlength'])"
-          [class.is-valid]="creditcard.valid"
-        />
+      <input
+        type="text"
+        class="form-control"
+        name="fullname"
+        id="fullname"
+        #fullname="ngModel"
+        [(ngModel)]="order.fullname"
+        required
+        minlength="3"
+        pattern="^[a-zA-Z ]+(-[a-zA-Z])*$"
+        [class.is-invalid]="((fullname.touched|| userForm.submitted) || fullname.dirty ) && (fullname.errors?.['required']||fullname.errors?.['pattern']|| fullname.errors?.['minlength'])"
+        [class.is-valid]="fullname.valid"
+      />
       </div>
       <div
         class="text-danger"
-        *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['required']"
+        *ngIf="((fullname.touched|| userForm.submitted) || fullname.dirty ) && fullname.errors?.['required']"
       >
-        Credit card is required
+        Full Name is Required
       </div>
+      <div
+        class="text-danger"
+        *ngIf="((fullname.touched|| userForm.submitted) || fullname.dirty ) && fullname.errors?.['pattern']"
+      >
+        Please use English Only
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="((fullname.touched|| userForm.submitted)|| fullname.dirty ) && fullname.errors?.['minlength']"
+      >
+        Full Name must be at least 3 char
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          id="address"
+          #address="ngModel"
+          [(ngModel)]="order.address"
+          required
+          minlength="3"
+          pattern="^[#.0-9a-zA-Z\s,-]+$"
+          [class.is-invalid]="((address.touched|| userForm.submitted) || address.dirty ) && (address.errors?.['required']||address.errors?.['pattern']|| address.errors?.['minlength'])"
+          [class.is-valid]="address.valid"
+        />
+      </div>
+        <div
+          class="text-danger"
+          *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['required']"
+        >
+          Address is required
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['pattern']"
+        >
+          Please use valid Address
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="((address.touched|| userForm.submitted)|| address.dirty ) && address.errors?.['minlength']"
+        >
+          Address must be at least 3 char length
+        </div>
 
-      <h1 class="d-flex justify-content-center">
-        Total : ${{ total}}
-      </h1>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="creditcard"
+          id="creditcard"
+          #creditcard="ngModel"
+          [(ngModel)]="order.creditcard"
+          required
+          minlength="3"
+          pattern="^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$"
+          [class.is-invalid]="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && (creditcard.errors?.['required']||creditcard.errors?.['pattern']|| creditcard.errors?.['minlength'])"
+          [class.is-valid]="creditcard.valid"
+        />
+        </div>
+
+        <div
+          class="text-danger"
+          *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['required']"
+        >
+          Credit card is required
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['pattern']"
+        >
+          Please use Valid Credit Card
+        </div>
+
+
+
+      <h1 class="d-flex justify-content-center">Total : ${{ total }}</h1>
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success col-lg-12 m-3 p-2">
-        Confirm Your Order
+          Confirm Your Order
         </button>
       </div>
     </form>

@@ -13,9 +13,9 @@ import { OrdersService } from '../services/orders.service';
   styleUrls: ['./order-confirmation-page.component.css'],
 })
 export class OrderConfirmationPageComponent implements OnInit {
-  order: Order = this.ordersService.getAllorder()[0];
+  order: Order = new Order();
   Products: Product[] = [];
-  total: number = this.order.totalpayed;
+  total: number = 0;
   constructor(
     private cartService: CartService,
     private ordersService: OrdersService,
@@ -24,10 +24,14 @@ export class OrderConfirmationPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.order =this.ordersService.getAllorder()[this.ordersService.getAllorder().length-1];
+    this.total = this.order.totalpayed;
+
     this.Products = this.order.products;
   }
   checkOut() {
     this.router.navigateByUrl('Success');
     this.cartService.clearCart();
+
   }
 }

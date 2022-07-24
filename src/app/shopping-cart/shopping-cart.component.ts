@@ -57,6 +57,7 @@ export class ShoppingCartComponent implements OnInit {
   }
   calculateTotal(): number {
     let sum = 0;
+
     this.cartService.getAllProduct().forEach((x) => {
       sum += x.price * x.quentity;
     });
