@@ -11,7 +11,6 @@ export class ServerMediatorService {
   constructor(private _http: HttpClient) {}
   URL: string = '/assets/data/data.json';
   getProducts(): Observable<Product[]> {
-
     return this._http.get<Product[]>(this.URL);
   }
 

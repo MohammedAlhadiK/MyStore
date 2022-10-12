@@ -31,12 +31,10 @@ export class WishListService {
       this.snackbarService.open(
         targetedProduct.name +
           ' has been added successfully to your WishList 😁',
-        'Dismiss',{duration:1600}
+        'Dismiss',
+        { duration: 1600 }
       );
     }
-
-
-
   }
   removeProduct(Productid: number): void {
     let CurrentProduct = this.productWishList.filter(

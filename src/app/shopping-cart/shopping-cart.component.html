@@ -1,32 +1,29 @@
 <div class="row">
   <div class="card-group col-lg-8">
     <div class="col-4 p-1 mb-3" *ngFor="let product of Products">
-      <app-view-product-in-cart [product]="product" (totalPayed)="total=$event"></app-view-product-in-cart>
+      <app-view-product-in-cart
+        [product]="product"
+        (totalPayed)="total = $event"
+      ></app-view-product-in-cart>
     </div>
   </div>
 
   <div class="row col-lg-4 check-out">
     <form (submit)="checkOut(userForm)" #userForm="ngForm">
-
-
-
-
-
-
       <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        name="fullname"
-        id="fullname"
-        #fullname="ngModel"
-        [(ngModel)]="order.fullname"
-        required
-        minlength="3"
-        pattern="^[a-zA-Z ]+(-[a-zA-Z])*$"
-        [class.is-invalid]="((fullname.touched|| userForm.submitted) || fullname.dirty ) && (fullname.errors?.['required']||fullname.errors?.['pattern']|| fullname.errors?.['minlength'])"
-        [class.is-valid]="fullname.valid"
-      />
+        <input
+          type="text"
+          class="form-control"
+          name="fullname"
+          id="fullname"
+          #fullname="ngModel"
+          [(ngModel)]="order.fullname"
+          required
+          minlength="3"
+          pattern="^[a-zA-Z ]+(-[a-zA-Z])*$"
+          [class.is-invalid]="((fullname.touched|| userForm.submitted) || fullname.dirty ) && (fullname.errors?.['required']||fullname.errors?.['pattern']|| fullname.errors?.['minlength'])"
+          [class.is-valid]="fullname.valid"
+        />
       </div>
       <div
         class="text-danger"
@@ -61,24 +58,24 @@
           [class.is-valid]="address.valid"
         />
       </div>
-        <div
-          class="text-danger"
-          *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['required']"
-        >
-          Address is required
-        </div>
-        <div
-          class="text-danger"
-          *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['pattern']"
-        >
-          Please use valid Address
-        </div>
-        <div
-          class="text-danger"
-          *ngIf="((address.touched|| userForm.submitted)|| address.dirty ) && address.errors?.['minlength']"
-        >
-          Address must be at least 3 char length
-        </div>
+      <div
+        class="text-danger"
+        *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['required']"
+      >
+        Address is required
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="((address.touched|| userForm.submitted) || address.dirty ) && address.errors?.['pattern']"
+      >
+        Please use valid Address
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="((address.touched|| userForm.submitted)|| address.dirty ) && address.errors?.['minlength']"
+      >
+        Address must be at least 3 char length
+      </div>
 
       <div class="input-group mb-3">
         <input
@@ -94,22 +91,20 @@
           [class.is-invalid]="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && (creditcard.errors?.['required']||creditcard.errors?.['pattern']|| creditcard.errors?.['minlength'])"
           [class.is-valid]="creditcard.valid"
         />
-        </div>
+      </div>
 
-        <div
-          class="text-danger"
-          *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['required']"
-        >
-          Credit card is required
-        </div>
-        <div
-          class="text-danger"
-          *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['pattern']"
-        >
-          Please use Valid Credit Card
-        </div>
-
-
+      <div
+        class="text-danger"
+        *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['required']"
+      >
+        Credit card is required
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="((creditcard.touched|| userForm.submitted) || creditcard.dirty ) && creditcard.errors?.['pattern']"
+      >
+        Please use Valid Credit Card
+      </div>
 
       <h1 class="d-flex justify-content-center">Total : ${{ total }}</h1>
       <div class="d-flex justify-content-center">

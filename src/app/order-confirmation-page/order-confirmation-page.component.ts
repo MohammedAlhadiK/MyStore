@@ -24,7 +24,10 @@ export class OrderConfirmationPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.order =this.ordersService.getAllorder()[this.ordersService.getAllorder().length-1];
+    this.order =
+      this.ordersService.getAllorder()[
+        this.ordersService.getAllorder().length - 1
+      ];
     this.total = this.order.totalpayed;
 
     this.Products = this.order.products;
@@ -32,6 +35,5 @@ export class OrderConfirmationPageComponent implements OnInit {
   checkOut() {
     this.router.navigateByUrl('Success');
     this.cartService.clearCart();
-
   }
 }

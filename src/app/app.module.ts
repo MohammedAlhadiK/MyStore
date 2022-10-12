@@ -35,8 +35,6 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     FooterComponent,
     ViewProductInCartComponent,
     WishlistComponent,
-
-
   ],
   imports: [
     BrowserModule,

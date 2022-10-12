@@ -1,7 +1,10 @@
 <div class="row">
   <div class="card-group col-lg-8">
     <div class="col-3 p-1 mb-3" *ngFor="let product of Products">
-      <app-view-product-in-cart [product]="product" (totalPayed)="total=$event"></app-view-product-in-cart>
+      <app-view-product-in-cart
+        [product]="product"
+        (totalPayed)="total = $event"
+      ></app-view-product-in-cart>
     </div>
   </div>
 
@@ -14,11 +17,9 @@
           placeholder="Enter your Full Name"
           name="fullname"
           [(ngModel)]="order.fullname"
-
           disabled=""
         />
       </div>
-
 
       <div class="input-group mb-3">
         <input
@@ -27,11 +28,9 @@
           placeholder="Enter your Address"
           name="address"
           [(ngModel)]="order.address"
-
           disabled=""
         />
       </div>
-
 
       <div class="input-group mb-3">
         <input
@@ -40,16 +39,11 @@
           placeholder="Enter your Credit card Number"
           name="creditcard"
           [(ngModel)]="order.creditcard"
-
           disabled
         />
       </div>
 
-
-
-      <h1 class="d-flex justify-content-center">
-        Total : ${{ total}}
-      </h1>
+      <h1 class="d-flex justify-content-center">Total : ${{ total }}</h1>
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success col-lg-12 m-3 p-2">
           Check Out

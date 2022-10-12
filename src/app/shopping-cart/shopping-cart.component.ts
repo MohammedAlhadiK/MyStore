@@ -25,10 +25,7 @@ export class ShoppingCartComponent implements OnInit {
     private snackbarService: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   checkOut(userForm: NgForm) {
     if (userForm.valid) {

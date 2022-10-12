@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private wishListservice: WishListService,
-    private snackbarService:MatSnackBar
+    private snackbarService: MatSnackBar
   ) {
     console.log(this.product);
     this.serverMediator.getProducts().subscribe((result) => {
@@ -57,13 +57,11 @@ export class ProductDetailsComponent implements OnInit {
   addToWishList() {
     this.wishListservice.addProductToWishList(this.product);
   }
-  validateQuentity(){
-    if(this.productQentity == 5){
-      this.snackbarService.open(
-        'product Qentity = 5 😁 ',
-        'Dismiss',
-        { duration: 2000 }
-      );
+  validateQuentity() {
+    if (this.productQentity == 5) {
+      this.snackbarService.open('product Qentity = 5 😁 ', 'Dismiss', {
+        duration: 2000,
+      });
     }
   }
 }

@@ -6,5 +6,5 @@ export class Order {
   fullname: string = '';
   address: string = '';
   creditcard: string = '';
-  datetimeCreated:Date=new Date();
+  datetimeCreated: Date = new Date();
 }

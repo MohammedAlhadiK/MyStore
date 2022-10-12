@@ -26,12 +26,10 @@ export class CartService {
   }
   addProductToCart(targetedProduct: Product) {
     if (this.existElement(targetedProduct.id, this.productCartList)) {
-
       this.productCartList
         .filter((p) => p.id == targetedProduct.id)
         .map((p) => (p.quentity += targetedProduct.quentity));
     } else this.productCartList.push(targetedProduct);
-
 
     this.snackbarService.open(
       targetedProduct.quentity +
@@ -72,8 +70,8 @@ export class CartService {
       .map((p) => (p.quentity += element.quentity));
   }
 
-  getTotal():number{
-   let Sum:number=0;
+  getTotal(): number {
+    let Sum: number = 0;
     this.productCartList.forEach((x) => {
       Sum += x.price * x.quentity;
     });
